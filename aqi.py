@@ -13,26 +13,15 @@ r = requests.get("https://air.utah.gov/xmlFeed.php?id=slc")
 
 root = ET.fromstring(r.content)
 #print (root.tag)
-###for child in root[1][2]:
 #    print (child.tag, child.attrib)
-#print (root[1][2][7]).attrib
-for data in root.findall('./site/data'):
+#only get 1st element returned. For most recent data from URL
+for data in root.findall('./site/data[1]'):
     for child in data:
         tag = child.tag
         value = child.text
         #this will print out all the tags and their value
-        #print (tag, value)
-        if tag == "ozone" or tag == "temperature":
-            print (tag, value)
-
-
-pp = pprint.PrettyPrinter(indent=4)
-#pp.pprint(slc_content)
-#pp.pprint(slc_content.keys())
-
-#for field in top_level_dict["fields"]:
-#    if field["name"] = "col_1":
-#            print(field["amount"])
-#                    break
-#print (slc_content)
-
+#        print (tag, value)
+        if tag == "temperature":
+            print (value,"F°")
+        #if tag == "ozone":
+        #    print (tag, value)
