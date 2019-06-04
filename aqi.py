@@ -6,12 +6,7 @@ from xml.etree import ElementTree as ET
 
 r = requests.get("https://air.utah.gov/xmlFeed.php?id=slc")
 
-#slc_content = xmltodict.parse(r.content)
-#print(slc_content)
-
 root = ET.fromstring(r.content)
-#print (root.tag)
-#    print (child.tag, child.attrib)
 #only get 1st element returned. For most recent data from URL
 for data in root.findall('./site/data[1]'):
     for child in data:
