@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests
-import xmltodict
-import pprint
 from xml.etree import ElementTree as ET
 
 
